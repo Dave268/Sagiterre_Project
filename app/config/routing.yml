@@ -1,0 +1,32 @@
+sgt_activity:
+    resource: "@SGTActivityBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sgt_media:
+    resource: "@SGTMediaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sgt_admin:
+    resource: "@SGTAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+sgt_news:
+    resource: "@SGTNewsBundle/Resources/config/routing.yml"
+    prefix:   /news
+
+sgt_content:
+    resource: "@SGTContentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sgt_user:
+    resource: "@SGTUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sgt_newsletter:
+    resource: "@SGTNewsletterBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sgt_core:
+    resource: "@SGTCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+

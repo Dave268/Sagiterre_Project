@@ -1,0 +1,3 @@
+sgt_user_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SGTUserBundle:Default:index }

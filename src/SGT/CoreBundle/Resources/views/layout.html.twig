@@ -1,0 +1,45 @@
+{# src/SGT/CoreBundle/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!--Titre de la page-->
+    <title>{% block title %}Sagiterre{% endblock %}</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--On importe nos feuilles css qui sont en php pour pouvoir accéder à des donner qui sont dans une base de données -->
+    <link href="{{ asset('bundles/core/style/style.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/core/style/accueil_style.css') }}" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+    <header>
+        <a href="#"><img src="{{ asset('bundles/core/images/site/logo5.png') }}"/></a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="infos_pratique.php">Infos Pratiques</a></li>
+            <li><a href="liens.php">Liens</a></li>
+            <li><a href="intervenants.php">Intervenants</a></li>
+            <!--<li><a href="methodes.php">Notre Approche</a></li>-->
+            <li><a href="activites.php">Toutes nos Activités</a></li>
+            <li><a href="index.php">Acceuil</a></li>
+        </ul>
+    </nav>
+    {#every page will fill in this section block#}
+    <section>
+        {% block body %}
+        {% endblock %}
+    </section>
+
+
+    <footer>
+        <h4>Contact:</h4>
+        <h5>Mail: <a href="mailto:antoinette@sagiterre.be">antoinette@sagiterre.be<a/></h5>
+        <h5>Numéro de téléphone: +32(0)472/259943</h5>
+        <h6><a href="http://www.davidgoubau.eu">Copyright &copy 2013 By David Goubau</a></h6>
+    </footer>
+
+</body>
+</html>

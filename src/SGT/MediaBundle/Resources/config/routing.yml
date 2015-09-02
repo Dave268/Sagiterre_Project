@@ -1,0 +1,3 @@
+sgt_media_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SGTMediaBundle:Default:index }

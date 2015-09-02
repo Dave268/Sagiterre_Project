@@ -1,0 +1,4 @@
+services:
+#    sgt_content.example:
+#        class: SGT\ContentBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

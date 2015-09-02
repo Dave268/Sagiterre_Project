@@ -1,0 +1,3 @@
+sgt_activity_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SGTActivityBundle:Default:index }
