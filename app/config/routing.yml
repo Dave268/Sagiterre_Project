@@ -1,6 +1,6 @@
 sgt_activity:
     resource: "@SGTActivityBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /activity
 
 sgt_media:
     resource: "@SGTMediaBundle/Resources/config/routing.yml"

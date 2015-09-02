@@ -15,16 +15,15 @@
 
 <body>
     <header>
-        <a href="#"><img src="{{ asset('bundles/core/images/site/logo5.png') }}"/></a>
+        <a href="{{ path('oc_core_home') }}"><img src="{{ asset('bundles/core/images/site/logo5.png') }}"/></a>
     </header>
     <nav>
         <ul>
             <li><a href="infos_pratique.php">Infos Pratiques</a></li>
-            <li><a href="liens.php">Liens</a></li>
-            <li><a href="intervenants.php">Intervenants</a></li>
-            <!--<li><a href="methodes.php">Notre Approche</a></li>-->
-            <li><a href="activites.php">Toutes nos Activités</a></li>
-            <li><a href="index.php">Acceuil</a></li>
+            <li><a href="{{ path('sgt_content_links') }}">Liens</a></li>
+            <li><a href="{{ path('sgt_content_intervenants') }}">Intervenants</a></li>
+            <li><a href="{{ path('sgt_activity_overview') }}">Toutes nos Activités</a></li>
+            <li><a href="{{ path('oc_core_home') }}">Acceuil</a></li>
         </ul>
     </nav>
     {#every page will fill in this section block#}

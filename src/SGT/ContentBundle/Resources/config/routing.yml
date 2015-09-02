@@ -1,3 +1,7 @@
-sgt_content_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: SGTContentBundle:Default:index }
+sgt_content_intervenants:
+    path:     /intervenants
+    defaults: { _controller: SGTContentBundle:Intervenants:index }
+
+sgt_content_links:
+    path:     /link
+    defaults: { _controller: SGTContentBundle:Links:index }
