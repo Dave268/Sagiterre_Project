@@ -1,3 +1,8 @@
-sgt_admin_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: SGTAdminBundle:Default:index }
+sgt_admin_home:
+    path:     /
+    defaults: { _controller: SGTAdminBundle:Admin:index }
+
+
+sgt_admin_content:
+    path:     /content
+    defaults: { _controller: SGTContentBundle:Content:index }
