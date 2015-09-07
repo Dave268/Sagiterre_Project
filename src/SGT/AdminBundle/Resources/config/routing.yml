@@ -6,3 +6,7 @@ sgt_admin_home:
 sgt_admin_content:
     path:     /content
     defaults: { _controller: SGTContentBundle:Content:index }
+
+sgt_admin_add_role:
+    path:     /content/role
+    defaults: { _controller: SGTContentBundle:Content:role }
