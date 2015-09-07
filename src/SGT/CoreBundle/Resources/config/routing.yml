@@ -1,3 +1,5 @@
+#src/SGT/CoreBundle/Resources/vonfig/routing.yml
+
 oc_core_home:
     path:      /
     defaults:  { _controller: SGTCoreBundle:Core:index }

@@ -1,3 +1,5 @@
+#src/SGT/ContentBundle/Resources/vonfig/routing.yml
+
 sgt_content_intervenants:
     path:     /intervenants
     defaults: { _controller: SGTContentBundle:Intervenants:index }
@@ -5,3 +7,7 @@ sgt_content_intervenants:
 sgt_content_links:
     path:     /link
     defaults: { _controller: SGTContentBundle:Links:index }
+
+sgt_content_infos:
+    path:     /infos
+    defaults: { _controller: SGTContentBundle:Infos:index }
