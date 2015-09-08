@@ -9,3 +9,7 @@ sgt_admin_content:
 sgt_admin_add_role:
     path:     /content/role
     defaults: { _controller: SGTContentBundle:Content:role }
+
+sgt_admin_add_user:
+    path:     /user/add
+    defaults: { _controller: SGTUserBundle:User:role }

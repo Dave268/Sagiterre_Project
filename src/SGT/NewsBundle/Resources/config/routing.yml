@@ -1,3 +1,0 @@
-sgt_news_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: SGTNewsBundle:Default:index }
