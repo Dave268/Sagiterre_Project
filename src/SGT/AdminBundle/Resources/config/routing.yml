@@ -2,7 +2,6 @@ sgt_admin_home:
     path:     /
     defaults: { _controller: SGTAdminBundle:Admin:index }
 
-
 sgt_admin_content:
     path:     /content
     defaults: { _controller: SGTContentBundle:Content:index }

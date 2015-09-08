@@ -18,10 +18,6 @@ sgt_content:
     resource: "@SGTContentBundle/Resources/config/routing.yml"
     prefix:   /
 
-sgt_user:
-    resource: "@SGTUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 sgt_newsletter:
     resource: "@SGTNewsletterBundle/Resources/config/routing.yml"
     prefix:   /
@@ -29,4 +25,14 @@ sgt_newsletter:
 sgt_core:
     resource: "@SGTCoreBundle/Resources/config/routing.yml"
     prefix:   /
+
+login:
+    pattern: /login
+    defaults: { _controller: SGTUserBundle:Security:login }
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout
 

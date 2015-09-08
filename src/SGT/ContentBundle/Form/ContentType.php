@@ -22,6 +22,9 @@ class ContentType extends AbstractType
                 'property'  => 'role',
                 'multiple'  => false
             ))
+            ->add('published', 'checkbox', array(
+                'required'  => false))
+            ->add('save', 'submit')
         ;
     }
     

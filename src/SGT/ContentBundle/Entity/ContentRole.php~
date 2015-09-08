@@ -99,5 +99,39 @@ class ContentRole
     /**
      * @ORM\OneToMany(targetEntity="SGT\ContentBundle\Entity\Content", mappedBy="role")
      */
-    private $content;
+    private $contents;
+    
+
+    /**
+     * Add contents
+     *
+     * @param \SGT\ContentBundle\Entity\Content $contents
+     * @return ContentRole
+     */
+    public function addContent(\SGT\ContentBundle\Entity\Content $contents)
+    {
+        $this->contents[] = $contents;
+
+        return $this;
+    }
+
+    /**
+     * Remove contents
+     *
+     * @param \SGT\ContentBundle\Entity\Content $contents
+     */
+    public function removeContent(\SGT\ContentBundle\Entity\Content $contents)
+    {
+        $this->contents->removeElement($contents);
+    }
+
+    /**
+     * Get contents
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContents()
+    {
+        return $this->contents;
+    }
 }

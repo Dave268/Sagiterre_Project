@@ -11,3 +11,4 @@ sgt_content_links:
 sgt_content_infos:
     path:     /infos
     defaults: { _controller: SGTContentBundle:Infos:index }
+

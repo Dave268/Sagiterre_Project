@@ -36,6 +36,13 @@ class Content
     private $role;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_add", type="datetime")
@@ -45,7 +52,7 @@ class Content
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_update", type="datetime")
+     * @ORM\Column(name="date_update", type="datetime", nullable=true)
      */
     private $dateUpdate;
 
@@ -142,4 +149,27 @@ class Content
     }
 
 
+
+    /**
+     * Set role
+     *
+     * @param \SGT\ContentBundle\Entity\ContentRole $role
+     * @return Content
+     */
+    public function setRole(\SGT\ContentBundle\Entity\ContentRole $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \SGT\ContentBundle\Entity\ContentRole 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

@@ -16,6 +16,7 @@ class ContentRoleType extends AbstractType
     {
         $builder
             ->add('role')
+            ->add('save', 'submit')
         ;
     }
     
