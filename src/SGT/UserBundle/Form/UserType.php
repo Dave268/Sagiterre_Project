@@ -15,10 +15,6 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('password')
-            ->add('roles')
-            ->add('mail')
             ->add('name')
             ->add('lastname')
             ->add('adress')
@@ -29,19 +25,13 @@ class UserType extends AbstractType
             ->add('mobile')
             ->add('bio')
             ->add('birthday')
-            ->add('newsletter')
-            ->add('save', 'submit')
+
         ;
     }
-    
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+
+    public function getParent()
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'SGT\UserBundle\Entity\User'
-        ));
+        return 'fos_user_registration';
     }
 
     /**
@@ -49,6 +39,6 @@ class UserType extends AbstractType
      */
     public function getName()
     {
-        return 'sgt_userbundle_user';
+        return 'sgt_user_registration';
     }
 }

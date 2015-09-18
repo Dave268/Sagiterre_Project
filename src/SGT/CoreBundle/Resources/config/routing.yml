@@ -1,4 +1,4 @@
-#src/SGT/CoreBundle/Resources/vonfig/routing.yml
+#src/SGT/CoreBundle/Resources/config/routing.yml
 
 sgt_core_home:
     path:      /

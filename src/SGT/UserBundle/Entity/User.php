@@ -4,6 +4,7 @@ namespace SGT\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\constraints as Assert;
 
 /**
  * User
@@ -26,6 +27,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     *
+     * @Assert\length(min=3, max=255, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $name;
 
@@ -33,6 +36,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     *
+     * @Assert\length(min=3, max=255, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $lastname;
 
@@ -40,6 +45,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="adress", type="string", length=255, nullable=true)
+     *
+     * @Assert\length(min=3, max=255, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $adress;
 
@@ -47,6 +54,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="postal", type="string", length=6, nullable=true)
+     *
+     * @Assert\length(min=3, max=6, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $postal;
 
@@ -54,6 +63,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     *
+     * @Assert\length(min=3, max=255, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $city;
 
@@ -61,6 +72,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     *
+     * @Assert\length(min=3, max=255, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $country;
 
@@ -68,6 +81,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="tel", type="string", length=18, nullable=true)
+     *
+     * @Assert\length(min=3, max=18, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $tel;
 
@@ -75,6 +90,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="mobile", type="string", length=18, nullable=true)
+     *
+     * @Assert\length(min=3, max=18, minMessage="le nom est trop court", maxMessage="Le nom est trop long", groups={"Registration", "Profile"})
      */
     private $mobile;
 
@@ -82,6 +99,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="bio", type="text", nullable=true)
+     *
+     *
      */
     private $bio;
 

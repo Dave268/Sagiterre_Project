@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -30,7 +30,6 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
-    translator: { fallback: %locale% }
 
 # Twig Configuration
 twig:
@@ -84,3 +83,6 @@ fos_user:
     db_driver:     orm                       # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
     firewall_name: main                      # Le nom du firewall derrière lequel on utilisera ces utilisateurs
     user_class:    SGT\UserBundle\Entity\User
+    registration:
+        form:
+            type: sgt_user_registration
