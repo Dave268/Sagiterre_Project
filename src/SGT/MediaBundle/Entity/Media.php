@@ -34,7 +34,7 @@ class Media
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique = true)
      */
     private $name;
 
@@ -401,33 +401,69 @@ class Media
         $extension = pathinfo($this->file->getClientOriginalName(), PATHINFO_EXTENSION);;
 
 
-        // On récupère le nom original du fichier de l'internaute
-        $name = $this->name . '.' . $extension;
         
 
-        if($extension == 'jpg' OR $extension == 'jpeg' OR $extension == 'png')
+        if(strtolower($extension) == 'jpg' OR strtolower($extension) == 'jpeg' OR strtolower($extension) == 'png')
         {
             $this->format = 'image';
-            $this->file->move(__DIR__."/../../../../web/" . $this->getUploadDirImages(), $name);
-            $this->url = $this->getUploadDirImages() . $name;
+            $path = $this->getUploadDirImages() . "image" . date('omj');
+            if(!file_exists(__DIR__ . "/../../../../web/" . $path))
+            {
+                mkdir($path);
+                chmod($path, 0777);
+            }
+            $this->file->move(__DIR__ . "/../../../../web/" . $path . "/", $this->name . "." . $extension);
+
+            $source = imagecreatefromjpeg(__DIR__ . "/../../../../web/" . $path . "/" . $this->name . "." . $extension);
+            $mini  = imagecreatetruecolor(120, imagesy($source)/(imagesx($source)/120));
+            $largeur_source = imagesx($source);
+            $hauteur_source = imagesy($source);
+            $largeur_mini   = imagesx($mini);
+            $hauteur_mini   = imagesy($mini);
+
+            imagecopyresampled($mini, $source, 0, 0, 0, 0, $largeur_mini, $hauteur_mini, $largeur_source, $hauteur_source);
+            imagejpeg($mini, __DIR__ . "/../../../../web/" . $path . "/" . $this->name . "_mini." . $extension);
+
+            $this->url = $path . "/" . $this->name . "." . $extension;
+            $this->urlMini = $path . "/" . $this->name . "_mini." . $extension;
         }
-        elseif($extension == 'mov' OR $extension == 'mp4' OR $extension == 'webm' OR $extension == 'ogv')
+        elseif(strtolower($extension) == 'mov' OR strtolower($extension) == 'mp4' OR strtolower($extension) == 'webm' OR strtolower($extension) == 'ogv')
         {
             $this->format = 'video';
-            $this->file->move(__DIR__."/../../../../web/" . $this->getUploadDirVideo(), $name);
-            $this->url = $this->getUploadDirVideo() . $name;
+            $path = $this->getUploadDirVideo() . "video" . date('omj');
+            if(!file_exists(__DIR__ . "/../../../../web/" . $path))
+            {
+                mkdir($path);
+                chmod($path, 0777);
+            }
+            $this->file->move(__DIR__ . "/../../../../web/" . $path . "/", $this->name . "." . $extension);
+            $this->url = $path . "/" . $this->name . "." . $extension;
+            $this->urlMini = "bundles/core/images/icons/video_icon.png";
         }
-        elseif($extension == 'mp3' OR $extension == 'aac' OR $extension == 'wav' OR $extension == 'aiff')
+        elseif(strtolower($extension) == 'mp3' OR strtolower($extension) == 'aac' OR strtolower($extension) == 'wav' OR strtolower($extension) == 'aiff')
         {
             $this->format = 'audio';
-            $this->file->move(__DIR__."/../../../../web/" . $this->getUploadDirAudio(), $name);
-            $this->url = $this->getUploadDirAudio() . $name;
+            $path = $this->getUploadDirAudio() . "audio" . date('omj');
+            if(!file_exists(__DIR__ . "/../../../../web/" . $path))
+            {
+                mkdir($path);
+                chmod($path, 0777);
+            }
+            $this->file->move(__DIR__ . "/../../../../web/" . $path . "/", $this->name . "." . $extension);
+            $this->url = $path . "/" . $this->name . "." . $extension;
+            $this->urlMini = "bundles/core/images/icons/audio_icon.png";
         }
         else
         {
             $this->format = 'other';
-            $this->file->move(__DIR__."/../../../../web/" . $this->getUploadDirOther(), $name);
-            $this->url = $this->getUploadDirOther() . $name;
+            $path = $this->getUploadDirOther() . "other" . date('omj');
+            if(!file_exists(__DIR__ . "/../../../../web/" . $path))
+            {
+                mkdir($path);
+                chmod($path, 0777);
+            }
+            $this->file->move(__DIR__ . "/../../../../web/" . $path . "/", $this->name . "." . $extension);
+            $this->url = $path . "/" . $this->name . "." . $extension;
         }
     }
 
