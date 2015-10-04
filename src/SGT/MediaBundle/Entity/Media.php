@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * media
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="SGT\MediaBundle\Entity\mediaRepository")
+ * @ORM\Entity(repositoryClass="SGT\MediaBundle\Entity\MediaRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Media

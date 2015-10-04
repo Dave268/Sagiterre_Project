@@ -12,6 +12,32 @@
 	</fieldset>
 	<fieldset>
 		
+		<table>
+			<tr>
+				<th>Thumbnail</th>
+				<th>Nom</th>
+				<th>Format</th>
+			</tr>
+		{% for media in listMedias%}
+				
+					<tr>
+						<td><a href="#"><img src="{{ asset(media.urlMini) }}" alt="{{ media.alt }}"/></a></td>
+						<td>{{ media.name }}</td>
+						<td>{{ media.format }}</td>
+					</tr>
+				
+			{% else %}
+				<li>Pas encore de medias!!!</li>
+			{% endfor %}
+		</table>
+
+
+		{% for p in range(1, nbPages) %}
+    <li{% if p == page %} class="active"{% endif %}>
+      <a href="{{ path('sgt_admin_media', {'page': p}) }}">{{ p }}</a>
+    </li>
+  {% endfor %}
+		
 	</fieldset>
 
 {% endblock %}

@@ -15,5 +15,7 @@ sgt_admin_add_user:
     defaults: { _controller: SGTUserBundle:User:role }
 
 sgt_admin_media:
-    path:      /media
-    defaults:  { _controller: SGTMediaBundle:Media:index }
+    path:      /media/{page}
+    defaults:  { _controller: SGTMediaBundle:Media:index, page: 1 }
+    requirements:
+        page: \d*
