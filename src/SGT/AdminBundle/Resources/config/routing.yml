@@ -19,3 +19,9 @@ sgt_admin_media:
     defaults:  { _controller: SGTMediaBundle:Media:index, page: 1 }
     requirements:
         page: \d*
+
+sgt_admin_news:
+    path:      /news/{page}
+    defaults:  { _controller: SGTNewsBundle:News:index, page: 1 }
+    requirements:
+        page: \d*

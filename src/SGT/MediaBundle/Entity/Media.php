@@ -101,6 +101,11 @@ class Media
      */
     private $dateUpdate;
 
+    /**
+   * @ORM\OneToMany(targetEntity="SGT\NewsBundle\Entity\NewsMedia", mappedBy="media")
+   */
+    private $newsMedias;
+
     private $file;
 
     public function getFile()
@@ -489,5 +494,38 @@ class Media
     {
         // On retourne le chemin relatif vers l'image pour un navigateur (relatif au répertoire /web donc)
         return 'bundles/uploads/other/';
+    }
+
+    /**
+     * Add newsMedias
+     *
+     * @param \SGT\NewsBundle\Entity\NewsMedia $newsMedias
+     * @return Media
+     */
+    public function addNewsMedia(\SGT\NewsBundle\Entity\NewsMedia $newsMedias)
+    {
+        $this->newsMedias[] = $newsMedias;
+
+        return $this;
+    }
+
+    /**
+     * Remove newsMedias
+     *
+     * @param \SGT\NewsBundle\Entity\NewsMedia $newsMedias
+     */
+    public function removeNewsMedia(\SGT\NewsBundle\Entity\NewsMedia $newsMedias)
+    {
+        $this->newsMedias->removeElement($newsMedias);
+    }
+
+    /**
+     * Get newsMedias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNewsMedias()
+    {
+        return $this->newsMedias;
     }
 }
