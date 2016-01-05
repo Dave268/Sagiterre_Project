@@ -56,11 +56,6 @@ class News
      */
     private $dateUpdate;
 
-    /**
-   * @ORM\OneToMany(targetEntity="SGT\NewsBundle\Entity\NewsMedia", mappedBy="news")
-   */
-    private $newsMedias;
-
     public function __construct()
     {
         $this->dateAdd = new \DateTime();
@@ -197,39 +192,5 @@ class News
     public function getDateUpdate()
     {
         return $this->dateUpdate;
-    }
-
-
-    /**
-     * Add newsMedias
-     *
-     * @param \SGT\NewsBundle\Entity\NewsMedia $newsMedias
-     * @return News
-     */
-    public function addNewsMedia(\SGT\NewsBundle\Entity\NewsMedia $newsMedias)
-    {
-        $this->newsMedias[] = $newsMedias;
-
-        return $this;
-    }
-
-    /**
-     * Remove newsMedias
-     *
-     * @param \SGT\NewsBundle\Entity\NewsMedia $newsMedias
-     */
-    public function removeNewsMedia(\SGT\NewsBundle\Entity\NewsMedia $newsMedias)
-    {
-        $this->newsMedias->removeElement($newsMedias);
-    }
-
-    /**
-     * Get newsMedias
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getNewsMedias()
-    {
-        return $this->newsMedias;
     }
 }

@@ -25,6 +25,7 @@ class ContentController extends Controller
 
         if($form->handlerequest($request)->isValid())
         {
+            $content->setAuthor($this->get('security.context')->getToken()->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($content);
             $em->flush();
@@ -44,6 +45,8 @@ class ContentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($role);
             $em->flush();
+
+            return $this->redirect($this->generateUrl('sgt_admin_content'));
         }
         return $this->get('templating')->renderResponse('SGTContentBundle:Content:role.html.twig', array(
             'form'  => $form->createView()

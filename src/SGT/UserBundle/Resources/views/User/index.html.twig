@@ -1,0 +1,39 @@
+{# src/SGT/UserBundle/Resources/views/User/index.html.twig #}
+
+{% extends "OselCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Page d'administration - Liste des membres - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div id="retour">
+		<a href="{{ path('osel_core_home') }}">Retour</a>
+	</div>
+	<table id="listeMembres">
+		<thead>
+			<tr>
+				<th><a href="#">Nom</a></th>
+				<th><a href="#">Prénom</a></th>
+				<th><a href="#">Adresse e-mail</a></th>
+				<th><a href="#">Instrument</a></th>
+			</tr>
+		</thead>
+	</table>
+			
+			<ul>
+				{% for user in listUsers%}
+					<li><a href="{{ path('osel_user_view', {'id': user.id}) }}">{{ user.lastname }} {{ user.name }} - {{ user.email }} - {% for instrument in user.instruments %}{{ instrument.instrument }}
+
+					{% if is_granted('ROLE_ADMIN') %}{% endif %}
+				</a><a href="{{ path('modify', {'id': user.id}) }}">Modifier</a>{% endfor %}</li>
+			
+			{% else %}
+				<p>Pas encore de Membres!!!</p>
+			{% endfor %}
+			</ul>
+			<button onclick="window.open('{{ path('osel_user_csv_options') }}')">Export Csv</button>
+	
+
+
+{% endblock %}

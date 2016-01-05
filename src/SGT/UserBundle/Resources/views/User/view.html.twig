@@ -1,0 +1,20 @@
+{# src/SGT/UserBundle/Resources/views/User/view.html.twig #}
+
+{% extends "OselCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Page d'administration - {{ user.lastname }} {{ user.name}} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div id="retour">
+		<a href="{{ path('osel_user_index') }}">Retour</a>
+	</div>
+	<fieldset id="acceuil">
+		<legend>{{ user.lastname }} {{ user.name }}</legend>
+
+	</fieldset>
+	
+
+
+{% endblock %}

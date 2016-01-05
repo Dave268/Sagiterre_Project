@@ -40,7 +40,7 @@ class Content
      *
      * @ORM\Column(name="published", type="boolean")
      */
-    private $published;
+    private $published = true;
 
     /**
      * @var \DateTime
@@ -55,6 +55,12 @@ class Content
      * @ORM\Column(name="date_update", type="datetime", nullable=true)
      */
     private $dateUpdate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SGT\UserBundle\Entity\User", inversedBy="contents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
 
     public function __construct()
     {
@@ -171,5 +177,28 @@ class Content
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Content
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

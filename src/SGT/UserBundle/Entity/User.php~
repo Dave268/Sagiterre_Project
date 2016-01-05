@@ -1030,27 +1030,4 @@ class User implements AdvancedUserInterface
     {
         return $this->medias;
     }
-
-    /**
-     * Set country
-     *
-     * @param \SGT\UserBundle\Entity\Country $country
-     * @return User
-     */
-    public function setCountry(\SGT\UserBundle\Entity\Country $country = null)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return \SGT\UserBundle\Entity\Country 
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
 }

@@ -56,6 +56,12 @@ class Content
      */
     private $dateUpdate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="SGT\UserBundle\Entity\User", inversedBy="contents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
     public function __construct()
     {
         $this->dateAdd = new \DateTime();
@@ -194,5 +200,28 @@ class Content
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \SGT\UserBundle\Entity\User $author
+     * @return Content
+     */
+    public function setAuthor(\SGT\UserBundle\Entity\User $author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \SGT\UserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

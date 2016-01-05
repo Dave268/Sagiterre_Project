@@ -30,8 +30,11 @@ class MediaController extends Controller
 	    $nbPages = ceil(count($listMedias)/$nbPerPage);
 
 	    // Si la page n'existe pas, on retourne une 404
-	    if ($page > $nbPages) {
-	      throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+	    $session = $request->getSession();
+
+	    if ($page > $nbPages) 
+	    {
+	    		$session->getFlashBag()->add('info', 'La page de media ' . $page . ' n\'existe pas.');
 	    }
 
 
@@ -42,6 +45,13 @@ class MediaController extends Controller
 	    if ($form->handleRequest($request)->isValid())
 	    {
 		    $media->upload();
+		    $author = $this->get('security.token_storage')->getToken()->getUser();
+
+		    if($author instanceof User)
+		    {
+		    	$author->addMedia($media);
+		    }
+		    
 		    $em = $this->getDoctrine()->getManager();
 		    $em->persist($media);
 		    $em->flush();

@@ -1,0 +1,121 @@
+{# src/SGT/UserBundle/Resources/views/User/add.html.twig #}
+
+{% extends "SGTCoreBundle::layout.html.twig" %}
+
+{% block body %}
+	<div id="retour">
+		<a href="{{ path('sgt_admin_home') }}">Retour</a>
+	</div>
+
+  {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
+  <fieldset id="acceuil">
+    <legend>Ajouter un Membre</legend>
+    <table id="register">
+    	{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    	<tr>
+    		<td>{{ form_errors(form) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.name, "Prénom: ") }}</td>
+    		<td>{{ form_widget(form.name) }}</td>
+    		<td>{{ form_errors(form.name) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.lastname, "Nom: ") }}</td>
+    		<td>{{ form_widget(form.lastname) }}</td>
+    		<td>{{ form_errors(form.lastname) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.email, "Adresse mail: ") }}</td>
+    		<td>{{ form_widget(form.email) }}</td>
+    		<td>{{ form_errors(form.email) }}</td>
+    	</tr>
+        <tr>
+            <td>{{ form_label(form.userRoles, "Roles: ") }}</td>
+            <td>{{ form_widget(form.userRoles) }}</td>
+            <td>{{ form_errors(form.userRoles) }}</td>
+        </tr>
+    	<tr>
+    		<td>{{ form_label(form.actif, "Membre actif?: ") }}</td>
+    		<td>{{ form_widget(form.actif) }}</td>
+    		<td>{{ form_errors(form.actif) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.newsletter, "Recevoir la newsletter?: ") }}</td>
+    		<td>{{ form_widget(form.newsletter) }}</td>
+    		<td>{{ form_errors(form.newsletter) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.profession, "Profession/Etudes: ") }}</td>
+    		<td>{{ form_widget(form.profession) }}</td>
+    		<td>{{ form_errors(form.profession) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.street, "Adresse: ") }}</td>
+    		<td>{{ form_widget(form.street) }}</td>
+    		<td>{{ form_errors(form.street) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.number, "Numéro: ") }}</td>
+    		<td>{{ form_widget(form.number) }}</td>
+    		<td>{{ form_errors(form.number) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.postal, "Code Postal: ") }}</td>
+    		<td>{{ form_widget(form.postal) }}</td>
+    		<td>{{ form_errors(form.postal) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.city, "Commune: ") }}</td>
+    		<td>{{ form_widget(form.city) }}</td>
+    		<td>{{ form_errors(form.city) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.country, "Pays: ") }}</td>
+    		<td>{{ form_widget(form.country) }}</td>
+    		<td>{{ form_errors(form.country) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.phone, "Numéro de téléphone: ") }}</td>
+    		<td>{{ form_widget(form.phone) }}</td>
+    		<td>{{ form_errors(form.phone) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.mobilephone, "Numéro de gsm: ") }}</td>
+    		<td>{{ form_widget(form.mobilephone) }}</td>
+    		<td>{{ form_errors(form.mobilephone) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.emergencyname, "Prénom de contact en cas d'urgence: ") }}</td>
+    		<td>{{ form_widget(form.emergencyname) }}</td>
+    		<td>{{ form_errors(form.emergencyname) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.emergencylastname, "Nom de contact en cas d'urgence: ") }}</td>
+    		<td>{{ form_widget(form.emergencylastname) }}</td>
+    		<td>{{ form_errors(form.emergencylastname) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.emergencyrelation, "La relation avec le contact d'urgence: ") }}</td>
+    		<td>{{ form_widget(form.emergencyrelation) }}</td>
+    		<td>{{ form_errors(form.emergencyrelation) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.emergencyphone, "Numéro de contact en cas d'urgence: ") }}</td>
+    		<td>{{ form_widget(form.emergencyphone) }}</td>
+    		<td>{{ form_errors(form.emergencyphone) }}</td>
+    	</tr>
+    	<tr>
+    		<td>{{ form_label(form.birthday, "Date de naissance: ") }}</td>
+    		<td>{{ form_widget(form.birthday) }}</td>
+    		<td>{{ form_errors(form.birthday) }}</td>
+    	</tr>
+    	<tr>
+    		<td colspan = "2">{{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}</td>
+    	</tr>
+    	{{ form_rest(form) }} 
+	</table>
+  </fieldset>
+
+{% endblock %}

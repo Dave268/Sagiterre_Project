@@ -102,9 +102,10 @@ class Media
     private $dateUpdate;
 
     /**
-   * @ORM\OneToMany(targetEntity="SGT\NewsBundle\Entity\NewsMedia", mappedBy="media")
-   */
-    private $newsMedias;
+     * @ORM\ManyToOne(targetEntity="SGT\UserBundle\Entity\User", inversedBy="medias")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
 
     private $file;
 
@@ -403,7 +404,7 @@ class Media
             return;
         }
 
-        $extension = pathinfo($this->file->getClientOriginalName(), PATHINFO_EXTENSION);;
+        $extension = pathinfo($this->file->getClientOriginalName(), PATHINFO_EXTENSION);
 
 
         
@@ -497,35 +498,25 @@ class Media
     }
 
     /**
-     * Add newsMedias
+     * Set author
      *
-     * @param \SGT\NewsBundle\Entity\NewsMedia $newsMedias
+     * @param \SGT\UserBundle\Entity\User $author
      * @return Media
      */
-    public function addNewsMedia(\SGT\NewsBundle\Entity\NewsMedia $newsMedias)
+    public function setAuthor(\SGT\UserBundle\Entity\User $author)
     {
-        $this->newsMedias[] = $newsMedias;
+        $this->author = $author;
 
         return $this;
     }
 
     /**
-     * Remove newsMedias
+     * Get author
      *
-     * @param \SGT\NewsBundle\Entity\NewsMedia $newsMedias
+     * @return \SGT\UserBundle\Entity\User 
      */
-    public function removeNewsMedia(\SGT\NewsBundle\Entity\NewsMedia $newsMedias)
+    public function getAuthor()
     {
-        $this->newsMedias->removeElement($newsMedias);
-    }
-
-    /**
-     * Get newsMedias
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getNewsMedias()
-    {
-        return $this->newsMedias;
+        return $this->author;
     }
 }

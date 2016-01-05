@@ -17,9 +17,9 @@
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     Connecté en tant que {{ app.user.username }}
     -
-    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+    <a href="{{ path('logout') }}">Déconnexion</a>
 {% else %}
-    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+    <a href="{{ path('login') }}">Connexion</a>
 {% endif %}
     <header>
         <a href="{{ path('sgt_core_home') }}"><img src="{{ asset('bundles/core/images/site/logo5.png') }}"/></a>

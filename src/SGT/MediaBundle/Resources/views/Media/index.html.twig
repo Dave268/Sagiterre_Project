@@ -11,25 +11,30 @@
 		{{ form(form) }}
 	</fieldset>
 	<fieldset>
+
+		{% for message in app.session.flashbag.get('info') %}
+        <p>{{ message }}</p>
+      {% endfor %}
 		
 		<table>
 			<tr>
 				<th>Thumbnail</th>
 				<th>Nom</th>
 				<th>Format</th>
+				<th>Ajouté par</th>
 			</tr>
-		{% for media in listMedias%}
-				
+		{% for media in listMedias%}				
 					<tr>
 						<td><a href="#"><img src="{{ asset(media.urlMini) }}" alt="{{ media.alt }}"/></a></td>
 						<td>{{ media.name }}</td>
 						<td>{{ media.format }}</td>
+						{% if media.author %} <td>{{ media.author.name }}</td> {% endif %}
 					</tr>
-				
 			{% else %}
-				<li>Pas encore de medias!!!</li>
+				<p>Pas encore de medias!!!</p>
 			{% endfor %}
 		</table>
+		
 
 
 		{% for p in range(1, nbPages) %}
