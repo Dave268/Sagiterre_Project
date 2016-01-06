@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: davidgoubau
- * Date: 07/09/15
- * Time: 16:40
- */
-
 namespace SGT\ContentBundle\Controller;
 
 use SGT\ContentBundle\Entity\Content;
@@ -25,9 +18,22 @@ class ContentController extends Controller
 
         if($form->handlerequest($request)->isValid())
         {
-            $content->setAuthor($this->get('security.context')->getToken()->getUser());
+            $content->setAuthor($this->get('security.token_storage')->getToken()->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($content);
+
+            $listContents = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('SGTContentBundle:Content')
+                ->getContent($content->getRole())
+                ;
+
+            foreach ($listContents as $contenu) 
+            {
+                $contenu->setActif(false);
+                $em->persist($contenu);
+            }
+
             $em->flush();
         }
         return $this->get('templating')->renderResponse('SGTContentBundle:Content:index.html.twig', array(

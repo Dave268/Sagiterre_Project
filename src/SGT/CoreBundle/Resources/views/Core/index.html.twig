@@ -8,5 +8,12 @@
 
 {% block body %}
 
+	
+{% if messageAccueil.content is defined %}
+		<p>{{ messageAccueil.content }}</p>
+	{% else %}
+		<p>{{ messageAccueil }}</p>
+{% endif %}
+		
 
 {% endblock %}

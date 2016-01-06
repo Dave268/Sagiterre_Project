@@ -420,7 +420,7 @@ class Media
             }
             $this->file->move(__DIR__ . "/../../../../web/" . $path . "/", $this->name . "." . $extension);
 
-                
+            $source = imagecreatefromjpeg(__DIR__ . "/../../../../web/" . $path . "/" . $this->name . "." . $extension);
             $mini  = imagecreatetruecolor(120, imagesy($source)/(imagesx($source)/120));
             $largeur_source = imagesx($source);
             $hauteur_source = imagesy($source);

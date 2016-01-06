@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use SGT\MediaBundle\Entity\Media;
 use SGT\MediaBundle\Form\MediaType;
+use SGT\UserBundl\Entity\User;
 
 class MediaController extends Controller
 {

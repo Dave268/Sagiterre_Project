@@ -5,10 +5,10 @@ namespace SGT\NewsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * News
+ * Content
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SGT\NewsBundle\Entity\NewsRepository")
  */
 class News
 {
@@ -38,9 +38,9 @@ class News
     /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="text")
      */
-    private $status;
+    private $status = 'draft';
 
     /**
      * @var \DateTime
@@ -52,9 +52,17 @@ class News
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_update", type="datetime")
+     * @ORM\Column(name="date_update", type="datetime", nullable=true)
+     *
      */
     private $dateUpdate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SGT\UserBundle\Entity\User", inversedBy="news")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $author;
+
 
     public function __construct()
     {
@@ -141,7 +149,7 @@ class News
     /**
      * Get status
      *
-     * @return boolean 
+     * @return string 
      */
     public function getStatus()
     {

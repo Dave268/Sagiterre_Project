@@ -12,4 +12,29 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContentRepository extends EntityRepository
 {
+	public function getAccueil()
+  	{
+	    $queryBuilder = $this->createQueryBuilder('a');
+
+	    $queryBuilder
+	    	->join('a.role', ('d'))
+	      	->where('d.role = :role')
+    		->setParameter('role', 'accueil')
+    		->andWhere('a.actif = :actif')
+    		->setParameter('actif', true)
+	    ;
+	    return $queryBuilder->getQuery()->getOneOrNullResult();
+  	}
+
+  	public function getContent($content)
+  	{
+	    $queryBuilder = $this->createQueryBuilder('a');
+
+	    $queryBuilder
+	    	->join('a.role', ('d'))
+	      	->where('d.role = :role')
+    		->setParameter('role', $content->getRole())
+	    ;
+	    return $queryBuilder->getQuery()->getResult();
+  	}
 }

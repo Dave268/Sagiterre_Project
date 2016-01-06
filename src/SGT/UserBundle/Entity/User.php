@@ -210,6 +210,18 @@ class User implements AdvancedUserInterface
      */
     private $medias;
 
+    /**
+     * @ORM\OneToMany(targetEntity="SGT\ContentBundle\Entity\Content", mappedBy="author")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $contents;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SGT\NewsBundle\Entity\News", mappedBy="author")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $news;
+
 
 
     public function __construct()
@@ -1052,5 +1064,71 @@ class User implements AdvancedUserInterface
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Add contents
+     *
+     * @param \SGT\ContentBundle\Entity\Content $contents
+     * @return User
+     */
+    public function addContent(\SGT\ContentBundle\Entity\Content $contents)
+    {
+        $this->contents[] = $contents;
+
+        return $this;
+    }
+
+    /**
+     * Remove contents
+     *
+     * @param \SGT\ContentBundle\Entity\Content $contents
+     */
+    public function removeContent(\SGT\ContentBundle\Entity\Content $contents)
+    {
+        $this->contents->removeElement($contents);
+    }
+
+    /**
+     * Get contents
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContents()
+    {
+        return $this->contents;
+    }
+
+    /**
+     * Add news
+     *
+     * @param \SGT\NewsBundle\Entity\News $news
+     * @return User
+     */
+    public function addNews(\SGT\NewsBundle\Entity\News $news)
+    {
+        $this->news[] = $news;
+
+        return $this;
+    }
+
+    /**
+     * Remove news
+     *
+     * @param \SGT\NewsBundle\Entity\News $news
+     */
+    public function removeNews(\SGT\NewsBundle\Entity\News $news)
+    {
+        $this->news->removeElement($news);
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNews()
+    {
+        return $this->news;
     }
 }

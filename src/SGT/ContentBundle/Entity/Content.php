@@ -30,7 +30,7 @@ class Content
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SGT\ContentBundle\Entity\ContentRole")
+     * @ORM\ManyToOne(targetEntity="SGT\ContentBundle\Entity\ContentRole", inversedBy="contents")
      * @ORM\JoinColumn(nullable=true)
      */
     private $role;
@@ -58,9 +58,16 @@ class Content
 
     /**
      * @ORM\ManyToOne(targetEntity="SGT\UserBundle\Entity\User", inversedBy="contents")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $author;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="actif", type="boolean", nullable=true)
+     */
+    private $actif = true;
 
     public function __construct()
     {
@@ -223,5 +230,28 @@ class Content
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif
+     * @return Content
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean 
+     */
+    public function getActif()
+    {
+        return $this->actif;
     }
 }

@@ -1,13 +1,12 @@
 <?php
 
-namespace SGT\ContentBundle\Form;
+namespace SGT\NewsBundle\Form;
 
-use SGT\ContentBundle\Entity\ContentRole;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ContentType extends AbstractType
+class NewsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,30 +15,25 @@ class ContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', 'textarea')
-            ->add('role', 'entity', array(
-                'class'     => 'SGTContentBundle:ContentRole',
-                'property'  => 'role',
-                'multiple'  => false
-            ))
-            ->add('published', 'checkbox', array(
-                'required'  => false))
+            ->add('title')
+            ->add('content')
             ->add('save', 'submit')
         ;
     }
-    
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SGT\ContentBundle\Entity\Content'
+            'data_class' => 'SGT\NewsBundle\Entity\News'
         ));
     }
+
 
     /**
      * @return string
      */
     public function getName()
     {
-        return 'sgt_contentbundle_content';
+        return 'sgt_newsbundle_news';
     }
 }

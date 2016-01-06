@@ -35,6 +35,12 @@ class ContentRole
      */
     private $dateAdd;
 
+    /**
+     * @ORM\OneToMany(targetEntity="SGT\ContentBundle\Entity\Content", mappedBy="role")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $contents;
+
     public function __construct()
     {
         $this->dateAdd = new \DateTime();
@@ -95,12 +101,6 @@ class ContentRole
     {
         return $this->dateAdd;
     }
-
-    /**
-     * @ORM\OneToMany(targetEntity="SGT\ContentBundle\Entity\Content", mappedBy="role")
-     */
-    private $contents;
-    
 
     /**
      * Add contents

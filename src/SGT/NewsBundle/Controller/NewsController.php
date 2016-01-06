@@ -5,8 +5,9 @@ namespace SGT\NewsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use SGT\MediaBundle\Entity\News;
-use SGT\MediaBundle\Form\NewsType;
+use SGT\NewsBundle\Entity\News;
+use SGT\NewsBundle\Form\NewsType;
+use SGT\UserBundl\Entity\User;
 
 class NewsController extends Controller
 {
@@ -30,26 +31,28 @@ class NewsController extends Controller
 	    $nbPages = ceil(count($listNews)/$nbPerPage);
 
 	    // Si la page n'existe pas, on retourne une 404
+	    $session = $request->getSession();
 	    if ($page > $nbPages) {
-	      throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+	      $session->getFlashBag()->add('info', 'La page de media ' . $page . ' n\'existe pas.');
 	    }
 
 
    		//pour l'insertion d'un nouveau média
 	    $news = new News();
-	    $form = $this->createForm(new NewsType(), $media);
+	    $form = $this->createForm(new NewsType(), $news);
 
 	    if ($form->handleRequest($request)->isValid())
 	    {
+	    	$news->setAuthor($this->get('security.token_storage')->getToken()->getUser());
 		    $em = $this->getDoctrine()->getManager();
 		    $em->persist($news);
 		    $em->flush();
 		}
         return $this->get('templating')->renderResponse('SGTNewsBundle:News:index.html.twig', array(
-            'form'  => $form->createView(),
-            'listNews' => $listNews,
-     	 	'nbPages'     => $nbPages,
-      		'page'        => $page
+            'form'  		=> $form->createView(),
+            'listNews' 		=> $listNews,
+     	 	'nbPages'   	=> $nbPages,
+      		'page'        	=> $page
         ));
     }
 }
